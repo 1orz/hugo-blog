@@ -1,0 +1,3 @@
+footer:
+    builtWith:
+        other: 由 <strong>{{ .Generator }}</strong> 强力驱动
