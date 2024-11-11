@@ -70,10 +70,18 @@ PubkeyAuthentication yes # 启用密钥登陆
 修改完成后保存并退出(注意修改sshd_config需要管理员权限)。
 ```
 
-7. 在PowerShell(管理员)中重启sshd服务
+5. 在PowerShell(管理员)中重启sshd服务
 
 ```powershell
 Restart-Service sshd
+```
+
+6. 设置默认shell为powershell
+
+在PowerShell(管理员)中运行以下命令
+
+```plaintext
+New-ItemProperty -Path "HKLM:\SOFTWARE\OpenSSH" -Name DefaultShell -Value "C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe" -PropertyType String -Force
 ```
 
 ## 连接
