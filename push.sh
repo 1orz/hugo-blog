@@ -29,7 +29,7 @@ if [[ "$*" == *"clean"* ]] || [[ "$*" == *"clear"* ]] ; then
         git add . &&
         git branch -D main &&
         git branch -M main &&
-        git commit -am "refactor: clean history commits."
+        git commit -am "refactor: clean history commits." &&
         git push --set-upstream origin main --force
     echo -e "\033[32m  History Commit Cleaned Successfully! \033[0m \n"
     push
