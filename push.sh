@@ -41,7 +41,7 @@ git add .
     git push origin main
 if [ $? -eq 0 ]; then
     echo -e "\033[32m  Git push Succeed! \033[0m \n"
-    hugo && rsync -a --compress --delete public/ ${USER}@${HOST}:${DIR}
+    push
     if [ $? -eq 0 ]; then
         echo -e "\033[32m  Succeed to Compile and Pushing Blog Source Code to Web Server! \033[0m \n"
     else
