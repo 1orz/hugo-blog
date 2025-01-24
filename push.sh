@@ -1,8 +1,8 @@
 #!/bin/bash
 
-USER=root
-HOST=cloudorz.com
-DIR=/root/server/data/wwwroot/blog
+USER=mt
+HOST=blog.cloudorz.com
+DIR=/mnt/data/server/data/wwwroot/blog
 
 push() {
     echo -e "\033[33m  Now Compile and Pushing Blog Source Code to Web Server.. \033[0m \n"
