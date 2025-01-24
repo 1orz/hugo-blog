@@ -24,10 +24,10 @@ tags: ["macOS"]
 打开终端，输入
 
 ```bash
-sudo xattr -d com.apple.quarantine /Applications/xxx.app
+xattr -cr /Applications/xxx.app
 ```
 
-回车，输入密码，回车，问题解决。
+回车，问题解决。
 
 ## 问题原因
 

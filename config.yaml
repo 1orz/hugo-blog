@@ -1,31 +1,8 @@
 baseurl: https://blog.cloudorz.com
 languageCode: zh-cn
 theme: hugo-theme-stack
-paginate: 10
 title: Tuan's Blog
 copyright: mt
-
-languages:
-    zh-cn:
-        languageName: 中文
-        title: Tuan's Blog
-        weight: 1
-        params:
-            description: 分享点滴进步
-
-    en:
-        languageName: English
-        title: Tuan's Blog
-        weight: 2
-        params:
-            description: Share Any Progress
-    
-
-# Change it to your Disqus shortname before using
-disqusShortname: hugo-theme-stack
-
-# GA Tracking ID
-googleAnalytics:
 
 # Theme i18n support
 # Available values: ar, bn, ca, de, el, en, es, fr, hu, id, it, ja, ko, nl, pt-br, th, uk, zh-cn, zh-hk, zh-tw
@@ -33,10 +10,37 @@ DefaultContentLanguage: zh-cn
 
 # Set hasCJKLanguage to true if DefaultContentLanguage is in [zh-cn ja ko]
 # This will make .Summary and .WordCount behave correctly for CJK languages.
-hasCJKLanguage: true
+hasCJKLanguage: false
+
+languages:
+    en:
+        languageName: English
+        title: Tuan's Blog
+        weight: 2
+        params:
+            sidebar:
+                subtitle: Share Any Progress
+    zh-cn:
+        languageName: 中文
+        title: Tuan's Blog
+        weight: 1
+        params:
+            sidebar:
+                subtitle: 分享点滴进步
+
+services:
+    # Change it to your Disqus shortname before using
+    disqus:
+        shortname: "hugo-theme-stack"
+    # GA Tracking ID
+    googleAnalytics:
+        id:
+
+pagination:
+    pagerSize: 3
 
 permalinks:
-    post: /post/:slug/
+    post: /p/:slug/
     page: /:slug/
 
 params:
@@ -48,7 +52,7 @@ params:
 
     footer:
         since: 2023
-        customText: 辽ICP备18009435号-1
+        customText:
 
     dateFormat:
         published: 2006-01-02 | 15:04:05 CST
@@ -85,6 +89,12 @@ params:
             repo:
             issueTerm: pathname
             label:
+
+        beaudar:
+            repo:
+            issueTerm: pathname
+            label:
+            theme:
 
         remark42:
             host:
@@ -146,6 +156,7 @@ params:
             repo:
             clientID:
             clientSecret:
+            proxy:
 
         cusdis:
             host:
@@ -193,7 +204,7 @@ params:
             enabled: true
 
 ### Custom menu
-### See https://docs.stack.jimmycai.com/configuration/custom-menu.html
+### See https://stack.jimmycai.com/config/menu
 ### To remove about, archive and search page menu item, remove `menu` field from their FrontMatter
 menu:
     main: []
@@ -224,6 +235,18 @@ related:
 
 markup:
     goldmark:
+        extensions:
+            passthrough:
+                enable: true
+                delimiters:
+                    block:
+                        - - \[
+                          - \]
+                        - - $$
+                          - $$
+                    inline:
+                        - - \(
+                          - \)
         renderer:
             ## Set to true if you have HTML content inside Markdown
             unsafe: true
