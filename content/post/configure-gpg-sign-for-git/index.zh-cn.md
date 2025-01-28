@@ -21,37 +21,44 @@ tags: [git, gpg, trace]
 
 首先，我们需要生成 GPG 密钥。如果你已经有 GPG 密钥，可以跳过这一步。
 
-```bash
-gpg --full-generate-key
-```
+    ```bash
+    gpg --full-generate-key
+    ```
 
 接下来，按照提示输入你的姓名、电子邮件地址和密码。生成密钥后，可以使用以下命令查看密钥列表：
 
-```bash
-gpg --list-secret-keys --keyid-format LONG
-```
+    ```bash
+    gpg --list-secret-keys --keyid-format LONG
+    ```
 
 ## 配置 Git 使用 GPG 签名
 
-首先，我们需要将 GPG 密钥添加到 Git 中：
+首先，我们需要查询 GPG 密钥的id：
 
-```bash
-gpg --armor --export <GPG_KEY_ID> | git config --global user.signingkey <GPG_KEY_ID>
-```
+    ```bash
+    gpg --list-secret-keys --keyid-format=long
+    ```
+
+随后将你的密钥告知git：
+
+    ```bash
+    git config --global user.signingkey <GPG_KEY_ID>
+    ```
 
 然后，我们需要告诉 Git 使用 GPG 签名提交：
 
-```bash
-git config --global commit.gpgsign true
-```
+    ```bash
+    git config --global commit.gpgsign true
+    git config --global tag.gpgSign true
+    ```
 
 ## 配置 Git 使用 GPG 签名追溯
 
 如果你想要在 Git 中使用 GPG 签名追溯，可以使用以下命令：
 
-```bash
-git config --global log.showSignature true
-```
+    ```bash
+    git config --global log.showSignature true
+    ```
 
 ## 结语
 
