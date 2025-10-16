@@ -46,7 +46,7 @@ jobs:
             -w /src \
             -e BASE_URL="${BASE_URL}" \
             ghcr.io/gohugoio/hugo:latest \
-            hugo --minify --baseURL "${BASE_URL}"
+            --minify --baseURL "${BASE_URL}"
 
       - name: Add custom domain (optional)
         if: ${{ env.CUSTOM_DOMAIN != '' }}
