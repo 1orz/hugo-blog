@@ -7,7 +7,7 @@ on:
   workflow_dispatch:  # 允许手动触发
 
 permissions:
-  contents: read  # 最小权限即可
+  contents: write  # 最小权限即可
   pages: write
   id-token: write
 
