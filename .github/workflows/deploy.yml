@@ -14,8 +14,6 @@ permissions:
 jobs:
   build-deploy:
     runs-on: ubuntu-latest
-    container:
-      image: ghcr.io/gohugoio/hugo:latest
     concurrency:
       group: "deploy-hugo"
       cancel-in-progress: true  # 避免重复构建
@@ -26,9 +24,11 @@ jobs:
         with:
           submodules: true      # 如果使用主题子模块，必须启用
           fetch-depth: 0        # 拉取完整提交历史（Hugo 可能用到）
+      
       - name: Setup Pages
         id: pages
         uses: actions/configure-pages@v5
+      
       - name: Determine baseURL
         run: |
           if [ -n "${CUSTOM_DOMAIN}" ]; then
@@ -38,8 +38,14 @@ jobs:
           fi
         env:
           CUSTOM_DOMAIN: blog.cloudorz.com
-      - name: Build site
-        run: hugo --minify --baseURL "${BASE_URL}"
+      
+      - name: Build site with Hugo
+        run: |
+          docker run --rm \
+            -v ${{ github.workspace }}:/src \
+            -w /src \
+            ghcr.io/gohugoio/hugo:latest \
+            hugo --minify --baseURL "${BASE_URL}"
 
       - name: Add custom domain (optional)
         if: ${{ env.CUSTOM_DOMAIN != '' }}
