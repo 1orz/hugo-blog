@@ -50,7 +50,8 @@ jobs:
 
       - name: Add custom domain (optional)
         if: ${{ env.CUSTOM_DOMAIN != '' }}
-        run: echo "${{ env.CUSTOM_DOMAIN }}" > ./public/CNAME
+        run: |
+          echo "${CUSTOM_DOMAIN}" | sudo tee ./public/CNAME > /dev/null
         env:
           CUSTOM_DOMAIN: blog.cloudorz.com  # 在这里填写你的自定义域名
 
