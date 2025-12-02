@@ -1,0 +1,16 @@
+[en]
+languageName = "English"
+title = "Tuan's Blog"
+weight = 2
+
+[en.params.sidebar]
+subtitle = "Share Any Progress"
+
+[zh-cn]
+languageName = "中文"
+title = "Tuan's Blog"
+weight = 1
+
+[zh-cn.params.sidebar]
+subtitle = "分享点滴进步"
+

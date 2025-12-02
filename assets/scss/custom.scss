@@ -1,0 +1,32 @@
+/*
+    Custom styles for the blog
+*/
+
+// Custom font families
+:root {
+    --zh-font-family: 'LXGW WenKai';
+    --base-font-family: var(--zh-font-family), sans-serif;
+    --code-font-family: 'Cascadia Code', var(--zh-font-family), monospace;
+}
+
+// Custom scrollbar
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+// Table of Contents widget styling
+.widget--toc {
+    #TableOfContents {
+        li {
+            margin: 2px 0 2px 4px;
+            padding: 2px;
+
+            & > ul {
+                margin-top: 2px;
+                margin-bottom: -2px;
+            }
+        }
+    }
+}
+

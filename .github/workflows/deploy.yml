@@ -3,32 +3,53 @@ name: Deploy Hugo site to GitHub Pages
 on:
   push:
     branches:
-      - main  # 每次推送到 main 分支时自动构建和部署
-  workflow_dispatch:  # 允许手动触发
+      - main
+  workflow_dispatch:
 
 permissions:
-  contents: write  # 最小权限即可
+  contents: write
   pages: write
   id-token: write
+
+env:
+  CUSTOM_DOMAIN: blog.cloudorz.com
 
 jobs:
   build-deploy:
     runs-on: ubuntu-latest
     concurrency:
       group: "deploy-hugo"
-      cancel-in-progress: true  # 避免重复构建
+      cancel-in-progress: true
 
     steps:
       - name: Checkout source
         uses: actions/checkout@v4
         with:
-          submodules: true      # 如果使用主题子模块，必须启用
-          fetch-depth: 0        # 拉取完整提交历史（Hugo 可能用到）
-      
+          fetch-depth: 0
+
+      - name: Cache Hugo resources
+        uses: actions/cache@v4
+        env:
+          cache-name: cache-hugo-resources
+        with:
+          path: resources
+          key: ${{ env.cache-name }}
+
+      - name: Setup Go
+        uses: actions/setup-go@v5
+        with:
+          go-version: "^1.25"
+
+      - name: Setup Hugo
+        uses: peaceiris/actions-hugo@v2
+        with:
+          hugo-version: "latest"
+          extended: true
+
       - name: Setup Pages
         id: pages
         uses: actions/configure-pages@v5
-      
+
       - name: Determine baseURL
         run: |
           if [ -n "${CUSTOM_DOMAIN}" ]; then
@@ -36,24 +57,13 @@ jobs:
           else
             echo "BASE_URL=${{ steps.pages.outputs.base_url }}" >> $GITHUB_ENV
           fi
-        env:
-          CUSTOM_DOMAIN: blog.cloudorz.com
-      
-      - name: Build site with Hugo
-        run: |
-          docker run --rm -u 0 \
-            -v ${{ github.workspace }}:/src \
-            -w /src \
-            -e BASE_URL="${BASE_URL}" \
-            ghcr.io/gohugoio/hugo:latest \
-            --minify --baseURL "${BASE_URL}"
 
-      - name: Add custom domain (optional)
+      - name: Build site with Hugo
+        run: hugo --minify --gc --baseURL "${BASE_URL}"
+
+      - name: Add custom domain
         if: ${{ env.CUSTOM_DOMAIN != '' }}
-        run: |
-          echo "${CUSTOM_DOMAIN}" | sudo tee ./public/CNAME > /dev/null
-        env:
-          CUSTOM_DOMAIN: blog.cloudorz.com  # 在这里填写你的自定义域名
+        run: echo "${CUSTOM_DOMAIN}" > ./public/CNAME
 
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3

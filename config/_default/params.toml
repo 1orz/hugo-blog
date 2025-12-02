@@ -1,0 +1,165 @@
+# Pages placed under these sections will be shown on homepage and archive page.
+mainSections = ["post"]
+# Output page's full content in RSS.
+rssFullContent = true
+featuredImageField = "image"
+favicon = ""
+
+[footer]
+since = 2023
+customText = ""
+
+[dateFormat]
+published = "2006-01-02 | 15:04:05 CST"
+lastUpdated = "2006-01-02 | 15:04:05 CST"
+
+[sidebar]
+emoji = ""
+subtitle = "那些听不见音乐的人以为跳舞的人疯了。"
+
+[sidebar.avatar]
+enabled = true
+local = true
+src = "img/avatar.jpg"
+
+[article]
+headingAnchor = false
+math = true
+readingTime = true
+
+[article.license]
+enabled = true
+default = '转载需要保留原始链接，未经明确许可，禁止商业使用。支持原创 <u>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh-hans) </u>'
+
+## Widgets
+[[widgets.homepage]]
+type = "search"
+
+[[widgets.homepage]]
+type = "archives"
+
+[widgets.homepage.params]
+limit = 5
+
+[[widgets.homepage]]
+type = "categories"
+
+[widgets.homepage.params]
+limit = 10
+
+[[widgets.homepage]]
+type = "tag-cloud"
+
+[widgets.homepage.params]
+limit = 10
+
+[[widgets.page]]
+type = "toc"
+
+[opengraph.twitter]
+site = "cloudorzi"
+card = "summary_large_image"
+
+[defaultImage.opengraph]
+enabled = false
+local = false
+src = ""
+
+[colorScheme]
+toggle = true
+default = "auto"
+
+[imageProcessing.cover]
+enabled = true
+
+[imageProcessing.content]
+enabled = true
+
+## Comments
+[comments]
+enabled = true
+provider = "waline"
+
+[comments.disqusjs]
+shortname = ""
+apiUrl = ""
+apiKey = ""
+admin = ""
+adminLabel = ""
+
+[comments.utterances]
+repo = ""
+issueTerm = "pathname"
+label = ""
+
+[comments.beaudar]
+repo = ""
+issueTerm = "pathname"
+label = ""
+theme = ""
+
+[comments.remark42]
+host = ""
+site = ""
+locale = ""
+
+[comments.vssue]
+platform = ""
+owner = ""
+repo = ""
+clientId = ""
+clientSecret = ""
+autoCreateIssue = false
+
+[comments.waline]
+dark = "auto"
+serverURL = "https://waline.cloudorz.com/"
+lang = "zh"
+emoji = [
+    "https://cdn.jsdelivr.net/gh/walinejs/emojis@1.0.0/alus",
+    "https://cdn.jsdelivr.net/gh/walinejs/emojis@1.0.0/bilibili",
+    "https://cdn.jsdelivr.net/gh/walinejs/emojis@1.0.0/qq",
+    "https://cdn.jsdelivr.net/gh/walinejs/emojis@1.0.0/tieba",
+    "https://cdn.jsdelivr.net/gh/walinejs/emojis@1.0.0/tw-emoji",
+    "https://cdn.jsdelivr.net/gh/walinejs/emojis@1.0.0/weibo"
+]
+requiredMeta = ["name"]
+
+[comments.waline.locale]
+admin = "Admin"
+placeholder = "管理员"
+
+[comments.twikoo]
+envId = ""
+region = ""
+path = ""
+lang = ""
+
+[comments.cactus]
+defaultHomeserverUrl = "https://matrix.cactus.chat:8448"
+serverName = "cactus.chat"
+siteName = ""
+
+[comments.giscus]
+repo = ""
+repoID = ""
+category = ""
+categoryID = ""
+mapping = ""
+lightTheme = ""
+darkTheme = ""
+reactionsEnabled = 1
+emitMetadata = 0
+
+[comments.gitalk]
+owner = ""
+admin = ""
+repo = ""
+clientID = ""
+clientSecret = ""
+proxy = ""
+
+[comments.cusdis]
+host = ""
+id = ""
+

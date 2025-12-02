@@ -3,7 +3,7 @@
   "baseUrl": ".",
   "paths": {
    "*": [
-    "../themes/hugo-theme-stack/assets/*"
+    "../../../go/pkg/mod/github.com/!cai!jimmy/hugo-theme-stack/v3@v3.32.0/assets/*"
    ]
   }
  }

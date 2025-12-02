@@ -1,0 +1,19 @@
+# Configure main menu and social menu
+# main menu items are configured in content page front matter
+
+[[social]]
+identifier = "github"
+name = "GitHub"
+url = "https://github.com/1orz"
+
+[social.params]
+icon = "brand-github"
+
+[[social]]
+identifier = "twitter"
+name = "Twitter"
+url = "https://twitter.com/cloudorzi"
+
+[social.params]
+icon = "brand-twitter"
+
